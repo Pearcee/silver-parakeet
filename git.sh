@@ -1,5 +1,5 @@
 git status
 git add .
-git commit -m "Changed for prostgres."
+git commit -m "$1"
 git push
 

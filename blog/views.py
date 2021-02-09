@@ -1,8 +1,10 @@
+from django.http import JsonResponse
 from django.shortcuts import redirect, render, get_object_or_404
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from .models import Post, Comment
 from .forms import PostForm, CommentForm
+import platform,socket,re,uuid,json,psutil,logging
 
 
 def post_list(request):
@@ -82,4 +84,27 @@ def comment_approve(request, pk):
 def comment_remove(request, pk):
     comment = get_object_or_404(Comment, pk=pk)
     comment.delete()
-    return redirect('post_detail', pk=comment.post.pk)  
+    return redirect('post_detail', pk=comment.post.pk) 
+
+def post_info(request):
+    # posts = ["Model","9"]
+    def getSystemInfo():
+        try:
+            info={}
+            info['platform']=platform.system()
+            info['platform-release']=platform.release()
+            info['platform-version']=platform.version()
+            info['architecture']=platform.machine()
+            info['hostname']=socket.gethostname()
+            info['ip-address']=socket.gethostbyname(socket.gethostname())
+            info['mac-address']=':'.join(re.findall('..', '%012x' % uuid.getnode()))
+            info['processor']=platform.processor()
+            info['ram']=str(round(psutil.virtual_memory().total / (1024.0 **3)))+" GB"
+            return json.dumps(info)
+        except Exception as e:
+            logging.exception(e)
+
+    data = json.loads(getSystemInfo())
+    print(data)
+    return JsonResponse(data)
+    # return render(request, 'blog/post_info.html', {'posts': posts})     
