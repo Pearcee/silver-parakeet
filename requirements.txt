@@ -1,5 +1,6 @@
 asgiref==3.3.1
 Django==3.1.5
+django-pwa==1.0.10
 django-system-information==0.0.11
 pkg-resources==0.0.0
 psutil==5.8.0
