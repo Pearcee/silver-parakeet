@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog.apps.BlogConfig',
+    'posts',
     'pwa',
     'pages',
 ]
@@ -135,7 +136,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 LOGIN_REDIRECT_URL = '/'
 
-PWA_SERVICE_WORKER_PATH = os.path.join(BASE_DIR, 'static/js', 'serviceworker.js')
+PWA_SERVICE_WORKER_PATH = os.path.join(BASE_DIR, 'posts/js', 'serviceworker.js')
 
 PWA_APP_NAME = 'geeksforgeeks'
 PWA_APP_DESCRIPTION = "GeeksForGeeks PWA"
