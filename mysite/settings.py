@@ -136,7 +136,8 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 LOGIN_REDIRECT_URL = '/'
 
-PWA_SERVICE_WORKER_PATH = os.path.join(BASE_DIR, 'posts/js', 'serviceworker.js')
+#PWA_SERVICE_WORKER_PATH = os.path.join(BASE_DIR, 'posts/js', 'serviceworker.js')
+PWA_SERVICE_WORKER_PATH = os.path.join(BASE_DIR, 'posts/static/js', 'serviceworker.js')
 
 PWA_APP_NAME = 'geeksforgeeks'
 PWA_APP_DESCRIPTION = "GeeksForGeeks PWA"

@@ -4,7 +4,7 @@ var dbPromise = idb.open('feeds-db', 5, function(upgradeDb) {
 
 
 	//collect latest post from server and store in idb
-	fetch('http://127.0.0.1:8000/getdata').then(function(response){
+	fetch('http://127.0.0.1:8000/posts/getdata').then(function(response){
 		return response.json();
 	}).then(function(jsondata){
 		dbPromise.then(function(db){
